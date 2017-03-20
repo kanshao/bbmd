@@ -1,0 +1,9 @@
+# jupyter
+jupyter == 1.0.0
+
+# python interpreter
+bpython==0.14.2
+
+# testing
+pytest==3.0.7
+pytest-xdist==1.15
