@@ -160,6 +160,7 @@ class WordReportFactory(object):
             drs = self.get_dr_plotting_data(session)
             fig = mpl.model_fit(drs, params)
             doc.add_picture(self.mpl_to_file(fig), width=Inches(5.5))
+            fig.clf()
 
         if model.predicted_pvalue:
             self.add_field(
@@ -188,6 +189,7 @@ class WordReportFactory(object):
             doc.add_heading('Parameter charts', 3)
             fig = mpl.parameter_plots(model.PARAMETERS, model.parameters)
             doc.add_picture(self.mpl_to_file(fig), width=Inches(4.35))
+            fig.clf()
 
     def get_dr_plotting_data(self, session):
         ds = session.dataset
@@ -286,6 +288,7 @@ class WordReportFactory(object):
         fig = mpl.bmd_kernels(is_dual, data)
         width = 4.5 if is_dual else 2.25
         doc.add_picture(self.mpl_to_file(fig), width=Inches(width))
+        fig.clf()
 
         if is_dual:
             doc.add_heading('BMD summary tables: %s' % bmds[0].DUAL_TYPE, 3)
